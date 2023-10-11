@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Bank,UserBankMapping,Recon,UploadedFile
+from .models import Bank,UserBankMapping,Reconciliation,UploadedFile
 
 # Register your models here.
 class BankAdmin(admin.ModelAdmin):
@@ -16,7 +16,7 @@ class UploadedFilesAdmin(admin.ModelAdmin):
 
 admin.site.register(UserBankMapping,MappedUserAdmin)
 admin.site.register(Bank,BankAdmin)
-admin.site.register(Recon,ReconciliationAdmin)
+admin.site.register(Reconciliation,ReconciliationAdmin)
 admin.site.register(UploadedFile,UploadedFilesAdmin)
 
 

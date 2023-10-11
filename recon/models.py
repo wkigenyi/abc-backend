@@ -5,6 +5,43 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 
 # Create your models here.
+
+class Transactions(models.Model):
+    DATE_TIME = models.DateTimeField(null=True, blank=True)
+    TRN_REF = models.CharField(max_length=255, null=True, blank=True)
+    BATCH = models.CharField(max_length=255, null=True, blank=True)
+    TXN_TYPE = models.CharField(max_length=255, null=True, blank=True)
+    TXN_ID = models.CharField(max_length=255, null=True, blank=True)
+    ISSUER = models.CharField(max_length=255, null=True, blank=True)
+    ACQUIRER = models.CharField(max_length=255, null=True, blank=True)
+    ISSUER_CODE = models.CharField(max_length=999, null=True, blank=True)
+    ACQUIRER_CODE = models.CharField(max_length=999, null=True, blank=True)
+    BRANCH_NAME = models.CharField(max_length=255, null=True, blank=True)
+    AGENTNAMES = models.CharField(max_length=4000, null=True, blank=True)
+    CHANNEL = models.CharField(max_length=255, null=True, blank=True)
+    AGENT_CODE = models.CharField(max_length=255, null=True, blank=True)
+    AGENT_CODE_ALIAS = models.CharField(max_length=255, null=True, blank=True)
+    AMOUNT = models.DecimalField(max_digits=18, decimal_places=5, null=True, blank=True)
+    ACC_NO = models.CharField(max_length=255, null=True, blank=True)
+    STAN = models.CharField(max_length=255, null=True, blank=True)
+    FEE = models.DecimalField(max_digits=18, decimal_places=5, null=True, blank=True)
+    REQUEST_TYPE = models.CharField(max_length=255, null=True, blank=True)
+    TRAN_REF_1 = models.CharField(max_length=255, null=True, blank=True)
+    TRAN_REF_0 = models.CharField(max_length=255, null=True, blank=True)
+    TRAN_STATUS_1 = models.CharField(max_length=255, null=True, blank=True)
+    TRAN_STATUS_0 = models.CharField(max_length=255, null=True, blank=True)
+    BENEFICIARY_ENTITY = models.CharField(max_length=255, null=True, blank=True)
+    ISSUER_COMMISSION = models.DecimalField(max_digits=18, decimal_places=5, null=True, blank=True)
+    ACQUIRER_COMMISSION = models.DecimalField(max_digits=18, decimal_places=5, null=True, blank=True)
+    AGENT_COMMISSION = models.DecimalField(max_digits=18, decimal_places=5, null=True, blank=True)
+    ABC_COMMISSION = models.DecimalField(max_digits=18, decimal_places=5, null=True, blank=True)
+    RESPONSE_CODE = models.CharField(max_length=255, null=True, blank=True)
+    TRANSACTION_STATUS = models.CharField(max_length=255, null=True, blank=True)
+    
+    class Meta:
+        managed = False
+        db_table = 'transactions'
+
 class Bank(models.Model):
     name = models.CharField(max_length=50,unique=True)
     swift_code = models.CharField(max_length=10,unique=True)
@@ -35,7 +72,7 @@ class ReconciliationLog(models.Model):
         managed = False
         db_table = 'Reconciliationlogs'
 
-class Recon(models.Model):
+class Reconciliation(models.Model):
     date_time = models.DateTimeField(blank=True, null=True)  # Field name made lowercase.
     tran_date = models.DateTimeField(blank=True, null=True)  # Field name made lowercase.
     trn_ref = models.CharField(max_length=255, blank=True, null=True,unique=True)  # Field name made lowercase.
@@ -61,6 +98,8 @@ class UploadedFile(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE,blank=True,null=True)
     def __str__(self) -> str:
         return self.file.name
+
+
     
 
 

@@ -81,13 +81,27 @@ WSGI_APPLICATION = 'recon_abc.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
+# DATABASES = {
     
-    'default':{
-        'ENGINE':'django.db.backends.mysql',
-        'NAME':'abc_recon',
-        'USER':'root',
-        'PASSWORD':'mysql'
+#     'default':{
+#         'ENGINE':'django.db.backends.mysql',
+#         'NAME':'abc_recon',
+#         'USER':'root',
+#         'PASSWORD':''
+#     }
+# }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'mssql',
+        'NAME': 'BusinessIntelligence',
+        'USER': '',  
+        'PASSWORD': '',
+        'HOST': 'ISABIRYEDICKSON',  
+        'PORT': '',  
+        'OPTIONS': {
+            'trusted_connection': 'yes',  
+        },
     }
 }
 
@@ -115,7 +129,7 @@ REST_FRAMEWORK = {
         'users.authentication.CustomJWTAuthentication',
     ],
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated'
+        'rest_framework.permissions.AllowAny'
     ]
 }
 
