@@ -94,7 +94,7 @@ WSGI_APPLICATION = 'recon_abc.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'mssql',
-        'NAME': 'abc_recon',
+        'NAME': 'BusinessIntelligence',
         'USER': '',  
         'PASSWORD': '',
         'HOST': 'ISABIRYEDICKSON',  
@@ -129,7 +129,7 @@ REST_FRAMEWORK = {
         'users.authentication.CustomJWTAuthentication',
     ],
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated'
+        'rest_framework.permissions.AllowAny'
     ]
 }
 
